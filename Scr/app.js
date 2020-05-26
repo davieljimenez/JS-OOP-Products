@@ -16,7 +16,7 @@ class UI{
                 <strong>Nombre del producto</strong>: ${producto.Nombre} -
                 <strong>Precio del producto</strong>: ${producto.Precio} -
                 <strong>Año del producto</strong>: ${producto.year}
-                <a href="#" class="btn btn-danger"> Borrar </a> 
+                <a href="#" class="btn btn-danger" name="Borrar"> Borrar </a> 
             </div>
         </div>
         `;
@@ -30,13 +30,12 @@ class UI{
         
     }
 
-    borrarProducto(){
-
+    borrarProducto(elemento){
+        if (elemento.name === "Borrar"){
+            elemento.parentElement.parentElement.parentElement.remove();
+        }
     }
 
-    verMensajes(){
-
-    }
 };
 
 //DOM EVENTOS + Obtener valores por ID
@@ -51,7 +50,15 @@ const product = new Producto(nombreDelProducto, precioDelProducto, yearDelProduc
 const ui =  new UI();
 ui.agregarProducto(product);
 ui.resetFormulario();
+ui.verMensajes("Producto agregado sactifactoriamente", "success");
+ 
 
 e.preventDefault();
 
+});
+
+document.getElementById("listaDeProductos").addEventListener("click", function(e){
+    const ui = new UI ();
+    ui.borrarProducto(e.target);
+    e.preventDefault();
 });

@@ -21,6 +21,12 @@ class UI{
         `;
 
     listaDeProductos.appendChild(elemento);
+}
+
+    resetFormulario(){
+        document.getElementById("formularioProductos").reset();
+
+        
     }
 
     borrarProducto(){
@@ -43,6 +49,7 @@ const product = new Producto(nombreDelProducto, precioDelProducto, yearDelProduc
 
 const ui =  new UI();
 ui.agregarProducto(product);
+ui.resetFormulario();
 
 e.preventDefault();
 
